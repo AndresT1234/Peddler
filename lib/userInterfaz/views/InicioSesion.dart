@@ -27,7 +27,7 @@ class LoginForm extends StatelessWidget {
                 fit: BoxFit.cover,
                 height: MediaQuery.sizeOf(context).height),
             Align(
-              alignment: Alignment(0, 0),
+              alignment: const Alignment(0, 0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -38,7 +38,7 @@ class LoginForm extends StatelessWidget {
                     padding: const EdgeInsets.only(
                         right: 16, bottom: 20, left: 16, top: 70),
                     decoration: BoxDecoration(
-                      color: Color(0xFF3B6064),
+                      color: const Color(0xFF3B6064),
                       borderRadius: BorderRadius.circular(10),
                       boxShadow: [
                         BoxShadow(
@@ -63,15 +63,15 @@ class LoginForm extends StatelessWidget {
                         Container(
                           width: 250,
                           height: 430,
-                          padding: EdgeInsets.all(16),
+                          padding: const EdgeInsets.all(16),
                           decoration: BoxDecoration(
-                            color: Color(0xFF55828B),
+                            color: const Color(0xFF55828B),
                             borderRadius: BorderRadius.circular(10),
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.black.withOpacity(0.2),
                                 blurRadius: 5,
-                                offset: Offset(0, 5),
+                                offset: const Offset(0, 5),
                               ),
                             ],
                           ),
@@ -106,7 +106,7 @@ class LoginForm extends StatelessWidget {
                                           .all<Color>(const Color(
                                               0xFF364958)), // Cambiar el color de fondo del botón
                                       minimumSize:
-                                          MaterialStateProperty.all<Size>(Size(
+                                          MaterialStateProperty.all<Size>(const Size(
                                               200,
                                               50)), // Cambiar el tamaño del botón
                                     ),
@@ -132,7 +132,7 @@ class LoginForm extends StatelessWidget {
                                           .all<Color>(const Color(
                                               0xFF364958)), // Cambiar el color de fondo del botón
                                       minimumSize:
-                                          MaterialStateProperty.all<Size>(Size(
+                                          MaterialStateProperty.all<Size>(const Size(
                                               200,
                                               50)), // Cambiar el tamaño del botón
                                     ),
