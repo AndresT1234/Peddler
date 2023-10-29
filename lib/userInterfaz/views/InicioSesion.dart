@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:peddler/userInterfaz/views/MenuPrincipal.dart';
 
 class InicioSesion extends StatelessWidget {
   const InicioSesion({super.key});
@@ -12,6 +13,7 @@ class InicioSesion extends StatelessWidget {
     );
   }
 }
+
 //dgsdvgsdsd
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
@@ -99,15 +101,19 @@ class LoginForm extends StatelessWidget {
                                 children: <Widget>[
                                   ElevatedButton(
                                     onPressed: () {
-                                      // Lógica para el inicio de sesión
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const MyMenu()),
+                                      );
                                     },
                                     style: ButtonStyle(
                                       backgroundColor: MaterialStateProperty
                                           .all<Color>(const Color(
                                               0xFF364958)), // Cambiar el color de fondo del botón
-                                      minimumSize:
-                                          MaterialStateProperty.all<Size>(const Size(
-                                              200,
+                                      minimumSize: MaterialStateProperty
+                                          .all<Size>(const Size(200,
                                               50)), // Cambiar el tamaño del botón
                                     ),
                                     child: const Text(
@@ -131,9 +137,8 @@ class LoginForm extends StatelessWidget {
                                       backgroundColor: MaterialStateProperty
                                           .all<Color>(const Color(
                                               0xFF364958)), // Cambiar el color de fondo del botón
-                                      minimumSize:
-                                          MaterialStateProperty.all<Size>(const Size(
-                                              200,
+                                      minimumSize: MaterialStateProperty
+                                          .all<Size>(const Size(200,
                                               50)), // Cambiar el tamaño del botón
                                     ),
                                     child: const Text(
