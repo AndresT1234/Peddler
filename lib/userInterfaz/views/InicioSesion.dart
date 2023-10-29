@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:peddler/userInterfaz/views/MenuPrincipal.dart';
+import 'package:peddler/userInterfaz/views/registroNegocio.dart';
 
 class InicioSesion extends StatelessWidget {
   const InicioSesion({super.key});
@@ -131,7 +132,12 @@ class LoginForm extends StatelessWidget {
                                   ),
                                   ElevatedButton(
                                     onPressed: () {
-                                      // Navegar a la pantalla de registro
+                                       Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const RegistroNegocio()),
+                                      );
                                     },
                                     style: ButtonStyle(
                                       backgroundColor: MaterialStateProperty
