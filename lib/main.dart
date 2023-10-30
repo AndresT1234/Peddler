@@ -17,11 +17,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Peddler',
       theme: ThemeData(
+  
 
         colorScheme: ColorScheme.fromSeed(seedColor:const  Color(0xff220A05)),
         useMaterial3: true,
       ),
+
+      //carlos sanabria
       home: const RegistroNegocio(),
+
+      //pipe
+      //home: const InicioSesion(),
+      
     );
   }
 }
