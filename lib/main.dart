@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:peddler/userInterfaz/views/InicioSesion.dart';
 import 'package:peddler/userInterfaz/views/RegistroNegocio.dart';
+import 'package:peddler/userInterfaz/views/misProductos.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,10 +17,13 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       //carlos sanabria
-      home: const RegistroNegocio(),
+      //home: const RegistroNegocio(),
       //pipe
       //home: const InicioSesion(),
       
+      //Ivan
+      //
+      home: const misProductos(),
       );
      
   }
