@@ -20,3 +20,4 @@ flutter:
   assets:
     - assets/inicio.png
     - assets/usuario.png
+    - assets/back.png

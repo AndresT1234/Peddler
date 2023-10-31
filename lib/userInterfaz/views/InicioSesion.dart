@@ -15,6 +15,10 @@ class InicioSesion extends StatelessWidget {
   }
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 849c5346b2e5b59ce9abc63ad5153661e789571e
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
   @override
