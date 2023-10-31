@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "485782064549",
+    "project_id": "peddler-ingsoft2023",
+    "storage_bucket": "peddler-ingsoft2023.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485782064549:android:1f8853a99c7f56bec16c4c",
+        "android_client_info": {
+          "package_name": "com.example.peddler"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApDPjyjgVdPRyeNfcr0Yi13TTvTeydwjw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

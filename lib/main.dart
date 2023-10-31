@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:peddler/userInterfaz/views/InicioSesion.dart';
 import 'package:peddler/userInterfaz/views/RegistroNegocio.dart';
 import 'package:peddler/userInterfaz/views/misProductos.dart';
+import 'firebase_options.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async { 
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
+runApp(const MyApp());
 }
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -25,7 +30,7 @@ class MyApp extends StatelessWidget {
       
       //Ivan
       home: const misProductos(),
-      
+
       );
      
   }
