@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       //home: const InicioSesion(),
       
       //Ivan
-      home: const misProductos(),
+      home: const MisProductos(),
 
       );
      
