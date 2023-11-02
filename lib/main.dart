@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       //carlos sanabria
       //home: const RegistroNegocio(),
 
-      //pipe
+      //pipe 
       //home: const InicioSesion(),
       
       //Ivan
