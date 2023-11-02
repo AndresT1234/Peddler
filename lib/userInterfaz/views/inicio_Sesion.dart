@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:peddler/userInterfaz/views/MenuPrincipal.dart';
-import 'package:peddler/userInterfaz/views/registroNegocio.dart';
+import 'package:peddler/userInterfaz/views/menu_Principal.dart';
+import 'package:peddler/userInterfaz/views/registro_Negocio.dart';
 
 class InicioSesion extends StatelessWidget {
   const InicioSesion({super.key});
