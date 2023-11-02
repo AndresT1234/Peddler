@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:peddler/userInterfaz/views/misProductos.dart';
+import 'package:peddler/userInterfaz/views/inicio_Sesion.dart';
 import 'firebase_options.dart';
 
 void main() async { 
@@ -19,15 +19,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor:const  Color(0xff220A05)),
         useMaterial3: true,
       ),
-
-      //carlos sanabria
-      //home: const RegistroNegocio(),
-
-      //pipe 
-      //home: const InicioSesion(),
-      
-      //Ivan
-      home: const MisProductos(),
+ 
+      home: const InicioSesion(),
 
       );
      
