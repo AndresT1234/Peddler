@@ -1,4 +1,4 @@
-import 'dart:developer';
+/*import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -105,3 +105,4 @@ class Database {
         .catchError((e) => log(e));
   }
 }
+*/
