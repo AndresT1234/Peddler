@@ -1,6 +1,6 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
-import 'package:peddler/userInterfaz/views/misProductos.dart';
+import 'package:peddler/userInterfaz/views/InicioSesion.dart';
 import 'firebase_options.dart';
 
 void main() async { 
@@ -24,10 +24,10 @@ class MyApp extends StatelessWidget {
       //home: const RegistroNegocio(),
 
       //pipe 
-      //home: const InicioSesion(),
+      home: const InicioSesion(),
       
       //Ivan
-      home: const MisProductos(),
+      //home: const MisProductos(),
 
       );
      
