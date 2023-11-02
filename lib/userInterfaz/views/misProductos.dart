@@ -1,9 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:peddler/userInterfaz/views/menuPrincipal.dart';
 
-class misProductos extends StatelessWidget {
-  const misProductos({Key? key}) : super(key: key);
+class MisProductos extends StatelessWidget {
+  const MisProductos({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
