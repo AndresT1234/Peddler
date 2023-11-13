@@ -1,22 +1,56 @@
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:peddler/userInterfaz/views/menu_Principal.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 final CollectionReference _mainCollection = _firestore.collection('Product');
 final CollectionReference _userCollection = _firestore.collection('User');
 
 class Database {
-  static String? userUid;
+  static String? userid;
 
-  static Future<void> autenticacionUsuario(String usuario)async {
+  static Future<void> autenticacionUsuario(String usuario, BuildContext context)async {
     CollectionReference users = FirebaseFirestore.instance.collection("User");
-    QuerySnapshot userQuery = await users.where("usuario", isEqualTo: usuario).get();
-    if(userQuery.docs.isNotEmpty){
+    try{
+      QuerySnapshot userQuery = await users.where("usuario", isEqualTo: usuario).get();
+      if(userQuery.docs.isNotEmpty){
+        userid=userQuery.docs[0].id;
+        // ignore: use_build_context_synchronously
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+            const MyMenu()
+          ),
+        );
       
-    }else{
-
+      }else{
+        Fluttertoast.showToast(
+        msg: "Usuario incorrecto",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 3,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 30.0,
+      );
+      }
+    }catch(e, stackTrace){
+      
+      print("Error en la consulta a Firebase: $e");
+      print("Stack trace: $stackTrace");
     }
+    
+  }
+
+  static Stream<QuerySnapshot> readItems() {
+    CollectionReference notesItemCollection =
+        _mainCollection.doc(userid).collection('Product');
+
+    return notesItemCollection.snapshots();
   }
 
   /*static Future<void> addUser({

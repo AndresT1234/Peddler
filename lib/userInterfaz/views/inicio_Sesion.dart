@@ -2,10 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:peddler/userInterfaz/views/menu_Principal.dart';
 import 'package:peddler/userInterfaz/views/registro_Negocio.dart';
+import 'package:peddler/database.dart';
+
 
 class InicioSesion extends StatelessWidget {
-  const InicioSesion({super.key});
-
+  InicioSesion({super.key});
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,6 +20,7 @@ class InicioSesion extends StatelessWidget {
 
 class LoginForm extends StatelessWidget {
   final TextEditingController controller = TextEditingController();
+  static String id="";
   LoginForm({super.key});
   @override
   Widget build(BuildContext context) {
@@ -105,7 +108,7 @@ class LoginForm extends StatelessWidget {
                                 children: <Widget>[
                                   ElevatedButton(
                                     onPressed: () {
-                                      autenticacionUsuario(controller.text, context);
+                                      Database.autenticacionUsuario(controller.text, context);
                                     },
                                     style: ButtonStyle(
                                       backgroundColor: MaterialStateProperty
@@ -171,21 +174,6 @@ class LoginForm extends StatelessWidget {
       ),
     );
   }
-  static Future<void> autenticacionUsuario(String usuario, BuildContext context)async {
-    CollectionReference users = FirebaseFirestore.instance.collection("User");
-    QuerySnapshot userQuery = await users.where("usuario", isEqualTo: usuario).get();
-    if(userQuery.docs.isNotEmpty){
-      // ignore: use_build_context_synchronously
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) =>
-          const MyMenu()
-        ),
-      );
-    }else{
-
-    }
-  }
+  
 
 }

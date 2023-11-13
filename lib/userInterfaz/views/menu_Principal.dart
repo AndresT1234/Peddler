@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:peddler/userInterfaz/views/misProductos.dart';
 
 class MyMenu extends StatelessWidget {
   const MyMenu({Key? key}) : super(key: key);
@@ -80,7 +81,13 @@ class MyMenu extends StatelessWidget {
                     children: [
                       ElevatedButton(
                         onPressed: () {
-                          // Cambiar el tamaño del texto
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                              const misProductos()
+                            ),
+                          );
                         },
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(

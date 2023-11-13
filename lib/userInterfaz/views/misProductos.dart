@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:peddler/userInterfaz/views/inicio_Sesion.dart';
 import 'package:peddler/userInterfaz/views/menu_Principal.dart';
 
 // ignore: camel_case_types
@@ -58,8 +59,9 @@ class misProductos extends StatelessWidget {
                     
                   ),
                   const SizedBox(height: 40,),
-                  producto("https://elmachetico.co/cdn/shop/products/Empanadas_El_Machetico_Empanada_de_arroz_y_carne_x_10_unidades_2.jpg?v=1634313453", 
-                    4, "Empanada"),
+                  //producto("https://elmachetico.co/cdn/shop/products/Empanadas_El_Machetico_Empanada_de_arroz_y_carne_x_10_unidades_2.jpg?v=1634313453", 
+                    //4, "Empanada"),
+                   
                 ], 
               ),
               Positioned(
@@ -96,44 +98,6 @@ class misProductos extends StatelessWidget {
             ],
           
         )
-    );
-  }
-
-  Widget producto(String ruta, int cantidad, String nombreProducto){
-    return Container(
-      width: 140,
-      height: 120,
-      decoration: const BoxDecoration(
-        color: Color.fromARGB(255, 54, 73, 88), 
-        borderRadius: BorderRadius.all(Radius.circular(20)) ,
-      ), 
-      child: Column(
-        
-        children: [
-          Stack(
-            children: [
-              Image.network(
-                ruta,
-                width: 140,
-                height: 90,
-              ),
-              Positioned(
-                top: 0,
-                right: 0,
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 54, 73, 88), 
-                    borderRadius: BorderRadius.all(Radius.circular(20)) ,
-                  ), 
-                  child: Text(cantidad.toString()),
-                ),
-              ),
-            ]
-          ),
-          
-          Text(nombreProducto),
-        ],
-      )
     );
   }
 
