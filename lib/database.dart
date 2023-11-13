@@ -1,14 +1,25 @@
-/*import 'dart:developer';
+import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-final CollectionReference _mainCollection = _firestore.collection('notes');
-final CollectionReference _userCollection = _firestore.collection('user');
+final CollectionReference _mainCollection = _firestore.collection('Product');
+final CollectionReference _userCollection = _firestore.collection('User');
 
 class Database {
   static String? userUid;
 
-  static Future<void> addUser({
+  static Future<void> autenticacionUsuario(String usuario)async {
+    CollectionReference users = FirebaseFirestore.instance.collection("User");
+    QuerySnapshot userQuery = await users.where("usuario", isEqualTo: usuario).get();
+    if(userQuery.docs.isNotEmpty){
+      
+    }else{
+
+    }
+  }
+
+  /*static Future<void> addUser({
     //Pedimos un objeto de tipo CustomUser para meterlo en la DB
     required CustomUser user,
   }) async {
@@ -103,6 +114,6 @@ class Database {
         .delete()
         .whenComplete(() => log('Note item deleted from the database'))
         .catchError((e) => log(e));
-  }
+  }*/
+
 }
-*/

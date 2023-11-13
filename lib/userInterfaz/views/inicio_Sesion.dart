@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:peddler/userInterfaz/views/menu_Principal.dart';
 import 'package:peddler/userInterfaz/views/registro_Negocio.dart';
@@ -7,7 +8,7 @@ class InicioSesion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
         child: LoginForm(),
       ),
@@ -16,9 +17,11 @@ class InicioSesion extends StatelessWidget {
 }
 
 class LoginForm extends StatelessWidget {
-  const LoginForm({super.key});
+  final TextEditingController controller = TextEditingController();
+  LoginForm({super.key});
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       body: SingleChildScrollView(
         child: Stack(
@@ -88,6 +91,7 @@ class LoginForm extends StatelessWidget {
                               const SizedBox(height: 30),
                               // Campo de entrada para el nombre de usuario
                               TextFormField(
+                                controller: controller,
                                 decoration: const InputDecoration(
                                   hintText: 'Nombre de usuario',
                                   prefixIcon: Icon(Icons.person),
@@ -101,12 +105,7 @@ class LoginForm extends StatelessWidget {
                                 children: <Widget>[
                                   ElevatedButton(
                                     onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const MyMenu()),
-                                      );
+                                      autenticacionUsuario(controller.text, context);
                                     },
                                     style: ButtonStyle(
                                       backgroundColor: MaterialStateProperty
@@ -171,6 +170,22 @@ class LoginForm extends StatelessWidget {
         ),
       ),
     );
+  }
+  static Future<void> autenticacionUsuario(String usuario, BuildContext context)async {
+    CollectionReference users = FirebaseFirestore.instance.collection("User");
+    QuerySnapshot userQuery = await users.where("usuario", isEqualTo: usuario).get();
+    if(userQuery.docs.isNotEmpty){
+      // ignore: use_build_context_synchronously
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) =>
+          const MyMenu()
+        ),
+      );
+    }else{
+
+    }
   }
 
 }
