@@ -7,8 +7,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:peddler/userInterfaz/views/menu_Principal.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-final CollectionReference _mainCollection = _firestore.collection('Product');
-final CollectionReference _userCollection = _firestore.collection('User');
+
 
 class Database {
   static String? userid;
@@ -30,19 +29,19 @@ class Database {
       
       }else{
         Fluttertoast.showToast(
-        msg: "Usuario incorrecto",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIosWeb: 3,
-        backgroundColor: Colors.red,
-        textColor: Colors.white,
-        fontSize: 30.0,
+          msg: "Usuario incorrecto",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 3,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 30.0,
       );
       }
     }catch(e, stackTrace){
       
-      print("Error en la consulta a Firebase: $e");
-      print("Stack trace: $stackTrace");
+      //print("Error en la consulta a Firebase: $e");
+      //print("Stack trace: $stackTrace");
     }
     
   }

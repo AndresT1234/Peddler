@@ -117,34 +117,35 @@ class misProductos extends StatelessWidget {
         }
         final List<QueryDocumentSnapshot> documentos = snapshot.data!.docs;
         
-        return Container(
-          height: 200,
-          child: ListView.builder(
-            itemCount: documentos.length,
-            itemBuilder: (BuildContext context, int index) {
-              QueryDocumentSnapshot doc = documentos[index];
-        
-              return FutureBuilder<String>(
-                future: Database.obtenerUrlDeImagen(doc['imagen']),
-                builder: (BuildContext context, AsyncSnapshot<String> urlSnapshot) {
-                  if (urlSnapshot.connectionState == ConnectionState.waiting) {
-                    return const CircularProgressIndicator(); // Puedes mostrar un indicador de carga mientras se obtiene la URL.
-                  }
-        
-                  if (urlSnapshot.hasError) {
-                    return Text('Error al cargar la imagen: ${urlSnapshot.error}');
-                  }
-        
-                  String urlDeImagen = urlSnapshot.data ?? '';
-        
-                  return producto(
-                    urlDeImagen,
-                    doc['Unidades'],
-                    doc['NombreProducto'],
-                  );
-                },
-              );
-            },
+        return SingleChildScrollView(
+          child: SizedBox(
+            
+            child: ListView.builder(
+              itemCount: documentos.length,
+              itemBuilder: (BuildContext context, int index) {
+                QueryDocumentSnapshot doc = documentos[index];
+          
+                //return FutureBuilder<String>(
+                  //future: Database.obtenerUrlDeImagen(doc['imagen']),
+                  //builder: (BuildContext context, AsyncSnapshot<String> urlSnapshot) {
+                    /*if (urlSnapshot.connectionState == ConnectionState.waiting) {
+                      return const CircularProgressIndicator(); // Puedes mostrar un indicador de carga mientras se obtiene la URL.
+                    }
+
+                    if (urlSnapshot.hasError) {
+                      return Text('Error al cargar la imagen: ${urlSnapshot.error}');
+                    }*/
+          
+                    //String urlDeImagen = urlSnapshot.data ?? '';
+                    return producto(
+                      doc['imagen'],
+                      doc['Unidades'],
+                      doc['NombreProducto'],
+                    );
+                  //},
+                //);
+              },
+            ),
           ),
         );
       }
@@ -163,18 +164,15 @@ class misProductos extends StatelessWidget {
         children: [
           Stack(
             children: [
-              
               Image.network(
                 ruta,
                 width: 120,
                 height: 120,
               ),
-              
               Positioned(
                 top: 0,
                 right: 0,
                 child: Container(
-                  
                   decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 54, 73, 88), 
                     borderRadius: BorderRadius.all(Radius.circular(20)) ,
@@ -184,14 +182,13 @@ class misProductos extends StatelessWidget {
                     style: const TextStyle(
                         fontFamily: 'Inder',
                         fontSize: 20,
-                        
                       ),
                   ),
                 ),
               ),
             ]
           ),
-
+          //Text(ruta),
           Text(nombreProducto),
         ],
       )
