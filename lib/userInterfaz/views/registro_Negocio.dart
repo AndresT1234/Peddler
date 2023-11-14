@@ -230,7 +230,9 @@ class RegistroNegocio extends StatelessWidget {
                   
                   child: ElevatedButton(
                     
-                    onPressed: () {},
+                    onPressed: () {
+                      
+                    },
                     style: ElevatedButton.styleFrom(
                       primary: const Color(0xff364958),
                       onPrimary: const Color(0xffC9E4CA),

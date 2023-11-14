@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:peddler/userInterfaz/views/menu_Principal.dart';
@@ -46,12 +47,20 @@ class Database {
     
   }
 
-  static Stream<QuerySnapshot> readItems() {
-    CollectionReference notesItemCollection =
-        _mainCollection.doc(userid).collection('Product');
+  static Stream<QuerySnapshot> traerProductos() {
+    CollectionReference userCollection = FirebaseFirestore.instance.collection("User");
+    CollectionReference productsCollection =
+        userCollection.doc(userid).collection('Product');
 
-    return notesItemCollection.snapshots();
+    return productsCollection.snapshots();
   }
+
+  
+  static Future<String> obtenerUrlDeImagen(String nombreDeArchivo) async {
+    Reference ref = FirebaseStorage.instance.ref().child(nombreDeArchivo);
+    return await ref.getDownloadURL();
+  }
+
 
   /*static Future<void> addUser({
     //Pedimos un objeto de tipo CustomUser para meterlo en la DB
