@@ -2,8 +2,8 @@
 
 Elaborado por:
 
-  - carlos andres sanabria
-  - emanuel rios bolivar
-  - mateo acevedo
-  - ivan tang
-  - juan felipe fernandez
+  - Carlos Andrés Sanabria
+  - Emanuel Ríos bolivar
+  - Mateo Acevedo
+  - Ivan Tang Zhu
+  - Juan Felipe Fernandez
