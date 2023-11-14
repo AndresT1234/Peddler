@@ -7,7 +7,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:peddler/userInterfaz/views/menu_Principal.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
+CollectionReference users = _firestore.collection("User");
 
 class Database {
   static String? userid;
@@ -23,7 +23,7 @@ class Database {
           context,
           MaterialPageRoute(
             builder: (context) =>
-            const MyMenu()
+            MyMenu()
           ),
         );
       
@@ -58,6 +58,16 @@ class Database {
   static Future<String> obtenerUrlDeImagen(String nombreDeArchivo) async {
     Reference ref = FirebaseStorage.instance.ref().child(nombreDeArchivo);
     return await ref.getDownloadURL();
+  }
+
+  static Future<String> getNombreUser() async {
+   
+    DocumentSnapshot userReference = await users.doc(userid).get();
+    var data = userReference.data() as Map<String, dynamic>?; // Puedes especificar el tipo exacto aquí
+    var nombreUsuario;
+    if(userReference.exists) nombreUsuario = data?['nombreUsuario'];
+
+    return nombreUsuario;
   }
 
 

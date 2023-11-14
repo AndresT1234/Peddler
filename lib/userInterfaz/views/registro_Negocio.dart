@@ -28,7 +28,7 @@ class RegistroNegocio extends StatelessWidget {
                           ),
                         ),
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 160.0, 
+                            horizontal: 60.0, 
                             vertical: 20.0,
                             ),
                         child: const Text(
@@ -37,7 +37,7 @@ class RegistroNegocio extends StatelessWidget {
                             color:  Color(0xffC9E4CA), 
                             fontSize: 18,
                             fontWeight: FontWeight
-                                .bold, // Otras personalizaciones de estilo
+                                .bold, 
                           ),
                         ),
                       ),
@@ -81,7 +81,7 @@ class RegistroNegocio extends StatelessWidget {
                                       ),
                                       contentPadding:
                                           const EdgeInsets.symmetric(
-                                              horizontal: 72.0),
+                                              horizontal: 15.0),
                                     ),
                                   ),
                                 ),
@@ -95,7 +95,7 @@ class RegistroNegocio extends StatelessWidget {
                                 Expanded(
                                   child: TextFormField(
                                     decoration: InputDecoration(
-                                      hintText: "ESCRIBE TU NOMBRE",
+                                      hintText: "Escribe tu nombre",
                                       hintStyle: const TextStyle(
                                         color: Colors.black, 
                                       ),
@@ -122,7 +122,7 @@ class RegistroNegocio extends StatelessWidget {
                                 Expanded(
                                   child: TextFormField(
                                     decoration: InputDecoration(
-                                      hintText: "INGRESA TU USUARIO",
+                                      hintText: "Escribe un usuario",
                                       hintStyle: const TextStyle(
                                         color: Colors.black,                                       ),
                                       filled: true,
@@ -149,7 +149,7 @@ class RegistroNegocio extends StatelessWidget {
                                 Expanded(
                                   child: TextFormField(
                                     decoration: InputDecoration(
-                                      hintText: "NOMBRE DE NEGOCIO",
+                                      hintText: "Nombre del negocio",
                                       hintStyle: const TextStyle(
                                         color: Colors.black, 
                                       ),
@@ -197,7 +197,7 @@ class RegistroNegocio extends StatelessWidget {
             child: Stack(
               children: <Widget>[
                 Container(
-                  padding: const EdgeInsets.all(60),
+                  padding: const EdgeInsets.all(5),
                   decoration: const BoxDecoration(
                     color: Colors.black,
                     borderRadius: BorderRadius.only(
@@ -213,7 +213,7 @@ class RegistroNegocio extends StatelessWidget {
             bottom: 0,
             left: 0,
             right: 0,
-            top: 650,
+            
             child: Stack(
               children: <Widget>[
                 Container(       
