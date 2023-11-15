@@ -34,7 +34,7 @@ class misProductos extends StatelessWidget {
                                 Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (_) => MyMenu(),
+                                  builder: (_) => MyMenu(userName: Database.userName),
                                 ),
                               );
                               }, 

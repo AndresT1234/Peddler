@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:peddler/database.dart';
 
 class RegistroNegocio extends StatelessWidget {
   const RegistroNegocio({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController nombreController = TextEditingController();
+    final TextEditingController usuarioController = TextEditingController();
+    final TextEditingController nombreNegocioController = TextEditingController();
     return Scaffold(
       backgroundColor: const Color(0xff3B6064),
       body: Stack(
@@ -94,6 +98,7 @@ class RegistroNegocio extends StatelessWidget {
                                 const SizedBox(width: 60),
                                 Expanded(
                                   child: TextFormField(
+                                    controller: nombreController,
                                     decoration: InputDecoration(
                                       hintText: "Escribe tu nombre",
                                       hintStyle: const TextStyle(
@@ -121,6 +126,7 @@ class RegistroNegocio extends StatelessWidget {
                                 const SizedBox(width: 60),
                                 Expanded(
                                   child: TextFormField(
+                                    controller: usuarioController,
                                     decoration: InputDecoration(
                                       hintText: "Escribe un usuario",
                                       hintStyle: const TextStyle(
@@ -148,6 +154,7 @@ class RegistroNegocio extends StatelessWidget {
                                 const SizedBox(width: 60),
                                 Expanded(
                                   child: TextFormField(
+                                    controller: nombreNegocioController,
                                     decoration: InputDecoration(
                                       hintText: "Nombre del negocio",
                                       hintStyle: const TextStyle(
@@ -229,9 +236,27 @@ class RegistroNegocio extends StatelessWidget {
                 Center(
                   
                   child: ElevatedButton(
-                    
-                    onPressed: () {
-                      
+                    onPressed: () async {
+                      await Database.registrarUsuario(nombreController.text,
+                        nombreNegocioController.text, 
+                        usuarioController.text
+                        ).then((_) {
+              
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Usuario añadido correctamente'),
+                              duration: Duration(seconds: 2),
+                            ),
+                          );
+                        }).catchError((error) {
+                          
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Error al añadir usuario: $error'),
+                              duration: const Duration(seconds: 2),
+                            ),
+                          );
+                        });
                     },
                     style: ElevatedButton.styleFrom(
                       primary: const Color(0xff364958),

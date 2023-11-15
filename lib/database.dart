@@ -8,22 +8,24 @@ import 'package:peddler/userInterfaz/views/menu_Principal.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 CollectionReference users = _firestore.collection("User");
-
+CollectionReference _userCollection = FirebaseFirestore.instance.collection("User");
 class Database {
   static String? userid;
-
+  static String userName="";
   static Future<void> autenticacionUsuario(String usuario, BuildContext context)async {
     CollectionReference users = FirebaseFirestore.instance.collection("User");
+    
     try{
       QuerySnapshot userQuery = await users.where("usuario", isEqualTo: usuario).get();
       if(userQuery.docs.isNotEmpty){
         userid=userQuery.docs[0].id;
+        userName = await getUserName(userid!);
         // ignore: use_build_context_synchronously
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) =>
-            MyMenu()
+            MyMenu(userName: userName,)
           ),
         );
       
@@ -45,7 +47,19 @@ class Database {
     }
     
   }
-
+  static Future<String> getUserName(String userId) async {
+    try {
+      DocumentSnapshot userSnapshot = await _userCollection.doc(userId).get();
+      if (userSnapshot.exists) {
+        return (userSnapshot.data() as Map<String, dynamic>?)?['Nombre']
+                as String? ??
+            '';
+      }
+    } catch (e) {
+      print("Error al obtener el nombre del usuario: $e");
+    }
+    return '';
+  }
   static Stream<QuerySnapshot> traerProductos() {
     CollectionReference userCollection = FirebaseFirestore.instance.collection("User");
     CollectionReference productsCollection =
@@ -64,13 +78,19 @@ class Database {
    
     DocumentSnapshot userReference = await users.doc(userid).get();
     var data = userReference.data() as Map<String, dynamic>?; // Puedes especificar el tipo exacto aquí
-    var nombreUsuario;
+    String nombreUsuario="";
     if(userReference.exists) nombreUsuario = data?['nombreUsuario'];
 
     return nombreUsuario;
   }
 
-
+  static Future<void> registrarUsuario(String nombre, String nombreNegocio, String usuario) async {
+    await users.add({
+      'Nombre': nombre,
+      'Negocio': nombreNegocio,
+      'usuario': usuario
+    });
+  }
   /*static Future<void> addUser({
     //Pedimos un objeto de tipo CustomUser para meterlo en la DB
     required CustomUser user,

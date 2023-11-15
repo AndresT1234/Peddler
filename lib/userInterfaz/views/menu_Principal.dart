@@ -3,8 +3,9 @@ import 'package:peddler/database.dart';
 import 'package:peddler/userInterfaz/views/misProductos.dart';
 
 class MyMenu extends StatelessWidget {
-  MyMenu({Key? key}) : super(key: key);
-
+  final String userName;
+  const MyMenu({Key? key, required this.userName}) : super(key: key);
+  
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -76,8 +77,7 @@ class MyMenu extends StatelessWidget {
                         child: Center(
                           child: Text(
                             
-                            "Bienvenido:"
-                            ,
+                            "Bienvenido: " + userName ,
                             style: const TextStyle(
                               fontFamily: 'Inder',
                               decoration: TextDecoration.none,
