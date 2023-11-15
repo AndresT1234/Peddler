@@ -76,8 +76,7 @@ class MyMenu extends StatelessWidget {
                         */
                         child: Center(
                           child: Text(
-                            
-                            "Bienvenido: " + userName ,
+                            "Bienvenido: $userName" ,
                             style: const TextStyle(
                               fontFamily: 'Inder',
                               decoration: TextDecoration.none,

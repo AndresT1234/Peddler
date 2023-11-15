@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:peddler/database.dart';
+import 'package:peddler/userInterfaz/views/inicio_Sesion.dart';
 
 class RegistroNegocio extends StatelessWidget {
   const RegistroNegocio({super.key});
@@ -245,7 +246,14 @@ class RegistroNegocio extends StatelessWidget {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               content: Text('Usuario añadido correctamente'),
-                              duration: Duration(seconds: 2),
+                              duration: Duration(seconds: 3),
+                            ),
+                          );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                              InicioSesion()
                             ),
                           );
                         }).catchError((error) {

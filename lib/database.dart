@@ -47,6 +47,7 @@ class Database {
     }
     
   }
+  
   static Future<String> getUserName(String userId) async {
     try {
       DocumentSnapshot userSnapshot = await _userCollection.doc(userId).get();
@@ -85,11 +86,13 @@ class Database {
   }
 
   static Future<void> registrarUsuario(String nombre, String nombreNegocio, String usuario) async {
-    await users.add({
+    DocumentReference nuevoUsuario =  await users.add({
       'Nombre': nombre,
       'Negocio': nombreNegocio,
-      'usuario': usuario
+      'usuario': usuario,
+      
     });
+    await nuevoUsuario.collection('Product').doc('documentoVacio').set({});
   }
   /*static Future<void> addUser({
     //Pedimos un objeto de tipo CustomUser para meterlo en la DB
