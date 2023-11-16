@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:peddler/database.dart';
-import 'package:peddler/userInterfaz/views/misProductos.dart';
+import 'package:peddler/userInterfaz/views/mis_Productos.dart';
 
 class MyMenu extends StatelessWidget {
   final String userName;
@@ -101,7 +101,7 @@ class MyMenu extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                              const misProductos()
+                              const mis_Productos()
                             ),
                           );
                         },
