@@ -6,7 +6,7 @@ import 'package:peddler/userInterfaz/views/mis_Productos.dart';
 class MyMenu extends StatelessWidget {
   final String userName;
   const MyMenu({Key? key, required this.userName}) : super(key: key);
-  
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -46,35 +46,38 @@ class MyMenu extends StatelessWidget {
             Container(
               width: 360,
               //margin: const EdgeInsets.symmetric(horizontal: 64.0),
-              padding: const EdgeInsets.only(bottom: 16, top: 20, left: 16, right: 16),
+              padding: const EdgeInsets.only(
+                  bottom: 16, top: 20, left: 16, right: 16),
               decoration: BoxDecoration(
                 color: const Color(0xFF364958),
                 borderRadius: BorderRadius.circular(20.0),
               ),
               child: Column(
                 children: [
-                  const SizedBox(height: 20,),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Container(
                     height: 80,
                     width: 300,
-                    padding: const EdgeInsets.symmetric(horizontal: 16), 
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
                     decoration: const BoxDecoration(
                       color: Color(0xFF3B6064),
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),
-                        child: Center(
-                          child: Text(
-                            "Bienvenido: $userName" ,
-                            style: const TextStyle(
-                              fontFamily: 'Inder',
-                              decoration: TextDecoration.none,
-                              color: Color(0xFFC9E4CA),
-                              fontSize: 18.0,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
+                    child: Center(
+                      child: Text(
+                        "Bienvenido: $userName",
+                        style: const TextStyle(
+                          fontFamily: 'Inder',
+                          decoration: TextDecoration.none,
+                          color: Color(0xFFC9E4CA),
+                          fontSize: 18.0,
                         ),
-                      //},
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    //},
                     //),
                   ),
                   const SizedBox(
@@ -88,9 +91,7 @@ class MyMenu extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>
-                              const mis_Productos()
-                            ),
+                                builder: (context) => const mis_Productos()),
                           );
                         },
                         style: ButtonStyle(
@@ -134,11 +135,11 @@ class MyMenu extends StatelessWidget {
                       mostrarBottomSheet(context);
                     },
                     style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            const Color(0xFF3B6064)),
-                        minimumSize: MaterialStateProperty.all<Size>(
-                            const Size(250, 80)),
-                        ),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          const Color(0xFF3B6064)),
+                      minimumSize:
+                          MaterialStateProperty.all<Size>(const Size(250, 80)),
+                    ),
                     child: const Text(
                       'Registrar Venta',
                       style: TextStyle(color: Color(0xFFC9E4CA), fontSize: 20),
@@ -182,7 +183,7 @@ class MyMenu extends StatelessWidget {
                           fontFamily: 'Inder',
                           decoration: TextDecoration.none,
                           color: Color(0xFF3B6064),
-                          fontSize: 18.0,
+                          fontSize: 20.0,
                         ),
                       ),
                     ),
@@ -196,17 +197,31 @@ class MyMenu extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),
                   ),
-                  const SizedBox( height: 15,),
+                  const SizedBox(
+                    height: 15,
+                  ),
                   TextFormField(
                     decoration: const InputDecoration(
                       hintText: 'Cantidad',
                       prefixIcon: Icon(Icons.add_shopping_cart),
                     ),
                   ),
-                  const SizedBox(height: 15,),
+                  const SizedBox(
+                    height: 15,
+                  ),
                   ElevatedButton(
-                    child: const Text('Registrar'),
+                    child: const Text(
+                      'Registrar',
+                      style: TextStyle(
+                        color: Color(0xFF87BBA2),
+                        fontSize: 20.0,
+                      ),
+                    ),
                     onPressed: () => Navigator.pop(context),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          const Color(0xFF3B6064)),
+                    ),
                   ),
                 ],
               ),

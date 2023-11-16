@@ -50,7 +50,7 @@ class Contabilidad extends StatelessWidget {
                                 height: 70,
                               ),
                             ),
-                        Text(
+                        const Text(
                           "Contabilidad",
                           style: TextStyle(
                             fontFamily: 'Inder',
