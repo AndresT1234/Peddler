@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:peddler/database.dart';
+import 'package:peddler/userInterfaz/views/agregar_Producto.dart';
+import 'package:peddler/userInterfaz/views/info_Productos.dart';
 import 'package:peddler/userInterfaz/views/inicio_Sesion.dart';
 import 'package:peddler/userInterfaz/views/menu_Principal.dart';
 
@@ -64,9 +66,11 @@ class mis_Productos extends StatelessWidget {
                   
                  
 
-                  Padding(
-                    padding: const EdgeInsets.only(left:80.0),
-                    child: mostrarProductos(Database.traerProductos()),
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left:80.0),
+                      child: mostrarProductos(Database.traerProductos()),
+                    ),
                   )
                   
                   
@@ -93,7 +97,13 @@ class mis_Productos extends StatelessWidget {
                           ),
                         ),
                         onPressed: (){
-                          //
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                              AgregarProducto()
+                            ),
+                          );
                         },
                         child: const Padding(
                           padding: EdgeInsets.all(16.0),
@@ -151,7 +161,8 @@ class mis_Productos extends StatelessWidget {
                     return producto(
                       doc['imagen'],
                       doc['Unidades'],
-                      doc['NombreProducto'],
+                      doc['NombreProducto'], 
+                      context
                     );
                   //},
                 //);
@@ -163,55 +174,67 @@ class mis_Productos extends StatelessWidget {
     );
   }
 
-  Widget producto(String ruta, int cantidad, String nombreProducto){
-    return Container(
-      margin: const EdgeInsets.only(right: 30),
-      width: 140,
-      height: 170,
-      decoration: const BoxDecoration(
-        color: Color.fromARGB(255, 54, 73, 88), 
-        borderRadius: BorderRadius.all(Radius.circular(20)) ,
-      ), 
-      child: Column(
-        children: [
-          Stack(
-            children: [
-              Center(
-                child: Image.network(
-                  ruta,
-                  width: 120,
-                  height: 120,
+  Widget producto(String ruta, int cantidad, String nombreProducto, BuildContext context){
+    return InkWell(
+      onTap: (){
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+            InfoProducto()
+          ),
+        );
+      },
+      child: Container(
+        
+        margin: const EdgeInsets.only(right: 30),
+        width: 140,
+        height: 170,
+        decoration: const BoxDecoration(
+          color: Color.fromARGB(255, 54, 73, 88), 
+          borderRadius: BorderRadius.all(Radius.circular(20)) ,
+        ), 
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                Center(
+                  child: Image.network(
+                    ruta,
+                    width: 120,
+                    height: 120,
+                  ),
                 ),
-              ),
-              Positioned(
-                top: 0,
-                right: 0,
-                child: Container(
-                  
-                  decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 54, 73, 88), 
-                    borderRadius: BorderRadius.all(Radius.circular(20)) ,
-                  ), 
-                  child: Text(
-                    cantidad.toString(),
-                    style: const TextStyle(
-                        fontFamily: 'Inder',
-                        fontSize: 20,
+                Positioned(
+                  top: 0,
+                  right: 0,
+                  child: Container(
+                    
+                    decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 54, 73, 88), 
+                      borderRadius: BorderRadius.all(Radius.circular(20)) ,
+                    ), 
+                    child: Text(
+                      cantidad.toString(),
+                      style: const TextStyle(
+                          fontFamily: 'Inder',
+                          fontSize: 20,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ]
-          ),
-          //Text(ruta),
-          Text(nombreProducto,
-            style: const TextStyle(
-              fontFamily: 'Inder',
-              fontSize: 20,
+              ]
             ),
-          ),
-        ],
-      )
+            //Text(ruta),
+            Text(nombreProducto,
+              style: const TextStyle(
+                fontFamily: 'Inder',
+                fontSize: 20,
+              ),
+            ),
+          ],
+        )
+      ),
     );
   }
 }
