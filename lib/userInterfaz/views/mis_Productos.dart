@@ -165,7 +165,7 @@ class mis_Productos extends StatelessWidget {
 
   Widget producto(String ruta, int cantidad, String nombreProducto){
     return Container(
-      margin: const EdgeInsets.only(right: 90),
+      margin: const EdgeInsets.only(right: 30),
       width: 140,
       height: 170,
       decoration: const BoxDecoration(
