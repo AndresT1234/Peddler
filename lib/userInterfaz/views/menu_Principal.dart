@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:peddler/database.dart';
+import 'package:peddler/userInterfaz/views/contabilidad.dart';
 import 'package:peddler/userInterfaz/views/mis_Productos.dart';
 
 class MyMenu extends StatelessWidget {
@@ -106,7 +107,11 @@ class MyMenu extends StatelessWidget {
                       const SizedBox(width: 10.0),
                       ElevatedButton(
                         onPressed: () {
-                          // Cambiar el tamaño del texto
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Contabilidad()),
+                          );
                         },
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(
@@ -211,6 +216,4 @@ class MyMenu extends StatelessWidget {
       },
     );
   }
-
-
 }
