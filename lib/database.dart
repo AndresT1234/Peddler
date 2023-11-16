@@ -1,14 +1,100 @@
-/*import 'dart:developer';
+import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:peddler/userInterfaz/views/menu_Principal.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-final CollectionReference _mainCollection = _firestore.collection('notes');
-final CollectionReference _userCollection = _firestore.collection('user');
-
+CollectionReference users = _firestore.collection("User");
+CollectionReference _userCollection = FirebaseFirestore.instance.collection("User");
 class Database {
-  static String? userUid;
+  static String? userid;
+  static String userName="";
+  static Future<void> autenticacionUsuario(String usuario, BuildContext context)async {
+    CollectionReference users = FirebaseFirestore.instance.collection("User");
+    
+    try{
+      QuerySnapshot userQuery = await users.where("usuario", isEqualTo: usuario).get();
+      if(userQuery.docs.isNotEmpty){
+        userid=userQuery.docs[0].id;
+        userName = await getUserName(userid!);
+        // ignore: use_build_context_synchronously
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+            MyMenu(userName: userName,)
+          ),
+        );
+      
+      }else{
+        Fluttertoast.showToast(
+          msg: "Usuario incorrecto",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 3,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 30.0,
+      );
+      }
+    }catch(e, stackTrace){
+      
+      //print("Error en la consulta a Firebase: $e");
+      //print("Stack trace: $stackTrace");
+    }
+    
+  }
+  
+  static Future<String> getUserName(String userId) async {
+    try {
+      DocumentSnapshot userSnapshot = await _userCollection.doc(userId).get();
+      if (userSnapshot.exists) {
+        return (userSnapshot.data() as Map<String, dynamic>?)?['Nombre']
+                as String? ??
+            '';
+      }
+    } catch (e) {
+      print("Error al obtener el nombre del usuario: $e");
+    }
+    return '';
+  }
+  static Stream<QuerySnapshot> traerProductos() {
+    CollectionReference userCollection = FirebaseFirestore.instance.collection("User");
+    CollectionReference productsCollection =
+        userCollection.doc(userid).collection('Product');
 
-  static Future<void> addUser({
+    return productsCollection.snapshots();
+  }
+
+  
+  static Future<String> obtenerUrlDeImagen(String nombreDeArchivo) async {
+    Reference ref = FirebaseStorage.instance.ref().child(nombreDeArchivo);
+    return await ref.getDownloadURL();
+  }
+
+  static Future<String> getNombreUser() async {
+   
+    DocumentSnapshot userReference = await users.doc(userid).get();
+    var data = userReference.data() as Map<String, dynamic>?; // Puedes especificar el tipo exacto aquí
+    String nombreUsuario="";
+    if(userReference.exists) nombreUsuario = data?['nombreUsuario'];
+
+    return nombreUsuario;
+  }
+
+  static Future<void> registrarUsuario(String nombre, String nombreNegocio, String usuario) async {
+    DocumentReference nuevoUsuario =  await users.add({
+      'Nombre': nombre,
+      'Negocio': nombreNegocio,
+      'usuario': usuario,
+      
+    });
+    await nuevoUsuario.collection('Product').doc('documentoVacio').set({});
+  }
+  /*static Future<void> addUser({
     //Pedimos un objeto de tipo CustomUser para meterlo en la DB
     required CustomUser user,
   }) async {
@@ -103,6 +189,6 @@ class Database {
         .delete()
         .whenComplete(() => log('Note item deleted from the database'))
         .catchError((e) => log(e));
-  }
+  }*/
+
 }
-*/

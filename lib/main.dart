@@ -1,9 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:peddler/userInterfaz/views/inicio_Sesion.dart';
+import 'package:peddler/userInterfaz/views/agregar_Producto.dart';
 import 'firebase_options.dart';
 
 void main() async { 
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
 );
@@ -21,17 +23,21 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor:const  Color(0xff220A05)),
         useMaterial3: true,
       ),
+      
+      home: InicioSesion(),
 
       //carlos sanabria
-      //home: const RegistroNegocio(),
+      //home:  const RegistroNegocio(),
+       // home: const AgregarProducto(),
+      //home:  const InfoProducto(),
 
       //pipe 
-      home: const InicioSesion(),
+      //home: const InicioSesion(),
       
       //Ivan
       //home: const MisProductos(),
 
-      );
+    );
      
   }
 }

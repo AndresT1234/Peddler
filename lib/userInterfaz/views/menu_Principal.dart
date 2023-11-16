@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:peddler/database.dart';
+import 'package:peddler/userInterfaz/views/mis_Productos.dart';
 
 class MyMenu extends StatelessWidget {
-  const MyMenu({Key? key}) : super(key: key);
-
+  final String userName;
+  const MyMenu({Key? key, required this.userName}) : super(key: key);
+  
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -59,28 +62,48 @@ class MyMenu extends StatelessWidget {
                       color: Color(0xFF3B6064),
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),
-                    child: const Center(
-                      child: Text(
-                        'Nombre de la persona',
-                        style: TextStyle(
-                          fontFamily: 'Inder',
-                          decoration: TextDecoration.none,
-                          color: Color(0xFFC9E4CA),
-                          fontSize: 18.0,
+                    /*child: FutureBuilder<String>(
+                      future: Database.getNombreUser(),
+                      builder: (BuildContext context, AsyncSnapshot<String> snapshot){
+                        if (snapshot.connectionState == ConnectionState.waiting) {
+                          return CircularProgressIndicator(); // Puedes mostrar un indicador de carga mientras se obtiene el nombre.
+                        }
+
+                        if (snapshot.hasError) {
+                          return Text('Error al cargar el nombre de usuario: ${snapshot.error}');
+                        }
+                        String nombre = snapshot.data ?? '';
+                        */
+                        child: Center(
+                          child: Text(
+                            "Bienvenido: $userName" ,
+                            style: const TextStyle(
+                              fontFamily: 'Inder',
+                              decoration: TextDecoration.none,
+                              color: Color(0xFFC9E4CA),
+                              fontSize: 18.0,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
+                      //},
+                    //),
                   ),
                   const SizedBox(
-                    height: 110,
+                    height: 70,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ElevatedButton(
                         onPressed: () {
-                          // Cambiar el tamaño del texto
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                              const mis_Productos()
+                            ),
+                          );
                         },
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(

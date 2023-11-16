@@ -1,13 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:peddler/userInterfaz/views/menu_Principal.dart';
 import 'package:peddler/userInterfaz/views/registro_Negocio.dart';
+import 'package:peddler/database.dart';
+
 
 class InicioSesion extends StatelessWidget {
-  const InicioSesion({super.key});
-
+  InicioSesion({super.key});
+  
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
         child: LoginForm(),
       ),
@@ -16,9 +19,12 @@ class InicioSesion extends StatelessWidget {
 }
 
 class LoginForm extends StatelessWidget {
-  const LoginForm({super.key});
+  final TextEditingController controller = TextEditingController();
+  static String id="";
+  LoginForm({super.key});
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       body: SingleChildScrollView(
         child: Stack(
@@ -88,6 +94,7 @@ class LoginForm extends StatelessWidget {
                               const SizedBox(height: 30),
                               // Campo de entrada para el nombre de usuario
                               TextFormField(
+                                controller: controller,
                                 decoration: const InputDecoration(
                                   hintText: 'Nombre de usuario',
                                   prefixIcon: Icon(Icons.person),
@@ -101,12 +108,7 @@ class LoginForm extends StatelessWidget {
                                 children: <Widget>[
                                   ElevatedButton(
                                     onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const MyMenu()),
-                                      );
+                                      Database.autenticacionUsuario(controller.text, context);
                                     },
                                     style: ButtonStyle(
                                       backgroundColor: MaterialStateProperty
@@ -172,5 +174,6 @@ class LoginForm extends StatelessWidget {
       ),
     );
   }
+  
 
 }
