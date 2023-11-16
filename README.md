@@ -3,7 +3,7 @@
 Elaborado por:
 
   - Carlos Andrés Sanabria
-  - Emanuel Rios Bolivar
+  - Emanuel Ríos bolivar
   - Mateo Acevedo
-  - Ivan Tang
+  - Ivan Tang Zhu
   - Juan Felipe Fernandez
