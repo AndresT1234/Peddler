@@ -66,30 +66,29 @@ class RegistroNegocio extends StatelessWidget {
                             Row(
                               children: [
                                 const SizedBox(width: 60),
-                                Expanded(
-                                  child: TextFormField(
-                                    decoration: InputDecoration(
-                                      hintText: "REGISTRA TU NEGOCIO",
-                                      hintStyle: const TextStyle(
-                                        color: Color(0xffC9E4CA) ,
-                                      ),
-                                      filled: true,
-                                      fillColor: const Color(0XFF3B6064),
-                                      border: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(20.0),
-                                        borderSide: const BorderSide(
-                                          color:
-                                              Color.fromARGB(255, 17, 17, 17),
-                                          width: 20.0,
-                                        ),
-                                      ),
-                                      contentPadding:
-                                          const EdgeInsets.symmetric(
-                                              horizontal: 15.0),
-                                    ),
-                                  ),
-                                ),
+                                Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xff3B6064),
+                          borderRadius: BorderRadius.circular(20.0),
+                          border: Border.all(
+                            color: Colors.black,
+                            width: 1.0,
+                          ),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 60.0, 
+                            vertical: 20.0,
+                            ),
+                        child: const Text(
+                          "REGISTRA TU NEGOCIO",
+                          style: TextStyle(
+                            color:  Color(0xffC9E4CA), 
+                            fontSize: 18,
+                            fontWeight: FontWeight
+                                .bold, 
+                          ),
+                        ),
+                      ),
                                 const SizedBox(width: 60),
                               ],
                             ),
@@ -222,6 +221,26 @@ class RegistroNegocio extends StatelessWidget {
             left: 0,
             right: 0,
             
+             child: Stack(
+              children: <Widget>[
+                Container(
+                  padding: const EdgeInsets.all(60),
+                  decoration: const BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            top: 630,
             child: Stack(
               children: <Widget>[
                 Container(       
@@ -274,7 +293,7 @@ class RegistroNegocio extends StatelessWidget {
                         vertical: 20, 
                       ),
                      
-                      shape: RoundedRectangleBorder(
+                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                         side: const BorderSide(
                           color: Colors.black,
