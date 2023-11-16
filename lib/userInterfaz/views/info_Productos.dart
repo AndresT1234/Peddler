@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:peddler/userInterfaz/views/mis_Productos.dart';
 
 class InfoProducto extends StatefulWidget {
   const InfoProducto({Key? key}) : super(key: key);
@@ -33,16 +34,35 @@ class _InfoProductoState extends State<InfoProducto> {
                 borderRadius: BorderRadius.circular(10.0),
               ),
               width: 350,
-              child: const Center(
-                child: Text(
-                  'Empanada',
-                  style: TextStyle(
-                    fontFamily: 'Inder',
-                    decoration: TextDecoration.none,
-                    color: Color(0xFFC9E4CA),
-                    fontSize: 36.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+              child:  Center(
+                child: Row(
+                  children: [
+                    IconButton(
+                              onPressed: (){
+                                Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => mis_Productos(),
+                                ),
+                              );
+                              }, 
+                              icon: Image.asset(
+                                'assets/back.png',
+                                width: 70,
+                                height: 70,
+                              ),
+                            ),
+                    Text(
+                      'Empanada',
+                      style: TextStyle(
+                        fontFamily: 'Inder',
+                        decoration: TextDecoration.none,
+                        color: Color(0xFFC9E4CA),
+                        fontSize: 36.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
