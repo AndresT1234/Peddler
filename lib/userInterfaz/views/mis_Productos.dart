@@ -5,8 +5,8 @@ import 'package:peddler/userInterfaz/views/inicio_Sesion.dart';
 import 'package:peddler/userInterfaz/views/menu_Principal.dart';
 
 // ignore: camel_case_types
-class misProductos extends StatelessWidget {
-  const misProductos({Key? key}) : super(key: key);
+class mis_Productos extends StatelessWidget {
+  const mis_Productos({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -165,7 +165,7 @@ class misProductos extends StatelessWidget {
 
   Widget producto(String ruta, int cantidad, String nombreProducto){
     return Container(
-      margin: const EdgeInsets.only(right: 90),
+      margin: const EdgeInsets.only(right: 30),
       width: 140,
       height: 170,
       decoration: const BoxDecoration(

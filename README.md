@@ -1,9 +1,9 @@
-# peddler
+# Peddler
 
 Elaborado por:
 
-  - carlos andres sanabria
-  - emanuel rios bolivar
-  - mateo acevedo
-  - ivan tang
-  - juan felipe fernandez
+  - Carlos Andrés Sanabria
+  - Emanuel Rios Bolivar
+  - Mateo Acevedo
+  - Ivan Tang
+  - Juan Felipe Fernandez
