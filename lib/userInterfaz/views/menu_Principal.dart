@@ -43,7 +43,6 @@ class MyMenu extends StatelessWidget {
             ),
             const SizedBox(height: 36.0),
             Container(
-              height: 550,
               width: 360,
               //margin: const EdgeInsets.symmetric(horizontal: 64.0),
               padding: const EdgeInsets.only(bottom: 16, top: 20, left: 16, right: 16),
@@ -57,23 +56,11 @@ class MyMenu extends StatelessWidget {
                   Container(
                     height: 80,
                     width: 300,
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 16), 
                     decoration: const BoxDecoration(
                       color: Color(0xFF3B6064),
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),
-                    /*child: FutureBuilder<String>(
-                      future: Database.getNombreUser(),
-                      builder: (BuildContext context, AsyncSnapshot<String> snapshot){
-                        if (snapshot.connectionState == ConnectionState.waiting) {
-                          return CircularProgressIndicator(); // Puedes mostrar un indicador de carga mientras se obtiene el nombre.
-                        }
-
-                        if (snapshot.hasError) {
-                          return Text('Error al cargar el nombre de usuario: ${snapshot.error}');
-                        }
-                        String nombre = snapshot.data ?? '';
-                        */
                         child: Center(
                           child: Text(
                             "Bienvenido: $userName" ,
@@ -139,7 +126,7 @@ class MyMenu extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-
+                      mostrarBottomSheet(context);
                     },
                     style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
@@ -160,4 +147,70 @@ class MyMenu extends StatelessWidget {
       ),
     );
   }
+
+  void mostrarBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          height: MediaQuery.of(context).size.height * 0.8,
+          decoration: const BoxDecoration(
+            color: Color(0xFFC9E4CA),
+            borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          ),
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    height: 50,
+                    width: 150,
+                    decoration: const BoxDecoration(
+                      color: Color(0xFF87BBA2),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        "Registar Venta",
+                        style: TextStyle(
+                          fontFamily: 'Inder',
+                          decoration: TextDecoration.none,
+                          color: Color(0xFF3B6064),
+                          fontSize: 18.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  Container(
+                    height: 225,
+                    width: 450,
+                    decoration: const BoxDecoration(
+                      color: Color(0xFF87BBA2),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    ),
+                  ),
+                  const SizedBox( height: 15,),
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      hintText: 'Cantidad',
+                      prefixIcon: Icon(Icons.add_shopping_cart),
+                    ),
+                  ),
+                  const SizedBox(height: 15,),
+                  ElevatedButton(
+                    child: const Text('Registrar'),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+
 }
