@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:peddler/database.dart';
+import 'package:peddler/userInterfaz/views/agregar_Producto.dart';
 import 'package:peddler/userInterfaz/views/inicio_Sesion.dart';
 import 'package:peddler/userInterfaz/views/menu_Principal.dart';
 
@@ -64,9 +65,11 @@ class mis_Productos extends StatelessWidget {
                   
                  
 
-                  Padding(
-                    padding: const EdgeInsets.only(left:80.0),
-                    child: mostrarProductos(Database.traerProductos()),
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left:80.0),
+                      child: mostrarProductos(Database.traerProductos()),
+                    ),
                   )
                   
                   
@@ -93,7 +96,13 @@ class mis_Productos extends StatelessWidget {
                           ),
                         ),
                         onPressed: (){
-                          //
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                              AgregarProducto()
+                            ),
+                          );
                         },
                         child: const Padding(
                           padding: EdgeInsets.all(16.0),

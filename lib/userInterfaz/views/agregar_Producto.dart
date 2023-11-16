@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:peddler/userInterfaz/views/mis_Productos.dart';
 
 class AgregarProducto extends StatelessWidget {
   const AgregarProducto({super.key});
@@ -28,7 +29,7 @@ class AgregarProducto extends StatelessWidget {
                           ),
                         ),
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 140.0,
+                          horizontal: 80.0,
                           vertical: 20.0,
                         ),
                         child: const Text(
@@ -199,7 +200,15 @@ class AgregarProducto extends StatelessWidget {
                                 const SizedBox(width: 80),
                                 Expanded(
                                   child: ElevatedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                          mis_Productos()
+                                        ),
+                                      );
+                                    },
                                     style: ElevatedButton.styleFrom(
                                       primary: const Color(0xff3B6064),
                                       onPrimary: const Color(0xffC9E4CA),
