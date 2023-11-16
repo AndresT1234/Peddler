@@ -8,13 +8,12 @@ class AgregarProducto extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xff3B6064),
-      body: Stack(
-        children: [
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: AspectRatio(
-                aspectRatio: 3 / 4,
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Column(
@@ -29,20 +28,39 @@ class AgregarProducto extends StatelessWidget {
                           ),
                         ),
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 80.0,
-                          vertical: 20.0,
+                          horizontal: 50.0,
+                          vertical: 5.0,
                         ),
-                        child: const Text(
-                          "MIS PRODUCTOS",
-                          style: TextStyle(
-                            color: Color(0xffC9E4CA),
-                            fontSize: 18,
-                            fontWeight: FontWeight
-                                .bold, // Otras personalizaciones de estilo
-                          ),
+                        child: Row(
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => mis_Productos(),
+                                  ),
+                                );
+                              },
+                              icon: Image.asset(
+                                'assets/back.png',
+                                width: 40,
+                                height: 40,
+                              ),
+                            ),
+                            const Text(
+                              "MIS PRODUCTOS",
+                              style: TextStyle(
+                                color: Color(0xffC9E4CA),
+                                fontSize: 18,
+                                fontWeight: FontWeight
+                                    .bold, // Otras personalizaciones de estilo
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 50),
                       Container(
                         decoration: BoxDecoration(
                           color: const Color(0xff364958),
@@ -53,7 +71,7 @@ class AgregarProducto extends StatelessWidget {
                             const SizedBox(height: 20),
                             Row(
                               children: [
-                                const SizedBox(width: 80),
+                                const SizedBox(width: 10),
                                 Container(
                                   decoration: BoxDecoration(
                                     color: const Color(0xff3B6064),
@@ -68,20 +86,17 @@ class AgregarProducto extends StatelessWidget {
                                     vertical: 20.0,
                                   ),
                                   child: const Expanded(
-                                  child: Text(
-                                    "NUEVO PRODUCTO",
-                                    style: TextStyle(
-                                      color: Color(0xffC9E4CA),
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
+                                    child: Text(
+                                      "NUEVO PRODUCTO",
+                                      style: TextStyle(
+                                        color: Color(0xffC9E4CA),
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                 ),
-                             
-                                ),    
                               ],
-                            
-                            
                             ),
                             const SizedBox(height: 20),
                             Row(
@@ -90,7 +105,7 @@ class AgregarProducto extends StatelessWidget {
                                 Expanded(
                                   child: TextFormField(
                                     decoration: InputDecoration(
-                                      hintText: "ESCRIBE TU NOMBRE",
+                                      hintText: "Producto",
                                       hintStyle: const TextStyle(
                                         color: Colors.black,
                                       ),
@@ -117,7 +132,7 @@ class AgregarProducto extends StatelessWidget {
                                 Expanded(
                                   child: TextFormField(
                                     decoration: InputDecoration(
-                                      hintText: "PRECIO DEL PRODUCTO",
+                                      hintText: "Precio de venta",
                                       hintStyle: const TextStyle(
                                         color: Colors.black,
                                       ),
@@ -145,7 +160,7 @@ class AgregarProducto extends StatelessWidget {
                                 Expanded(
                                   child: TextFormField(
                                     decoration: InputDecoration(
-                                      hintText: "COSTO DEL PRODUCTO",
+                                      hintText: "Costo producto",
                                       hintStyle: const TextStyle(
                                         color: Colors.black,
                                       ),
@@ -171,22 +186,25 @@ class AgregarProducto extends StatelessWidget {
                               children: [
                                 const SizedBox(width: 80),
                                 Expanded(
-                                  child: TextFormField(
-                                    decoration: InputDecoration(
-                                      hintText: "INGRESE LA IMAGEN",
-                                      hintStyle: const TextStyle(
-                                        color: Colors.black,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      // Función a ejecutar cuando se presiona el botón
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      foregroundColor: Colors
+                                          .black, backgroundColor: const Color(
+                                          0XFFC9E4CA), // Cambia el color del texto del botón
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                            15.0), // Cambia el radio de los bordes del botón
                                       ),
-                                      filled: true,
-                                      fillColor: const Color(0XFFC9E4CA),
-                                      border: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(20.0),
-                                        borderSide: const BorderSide(
-                                          color:
-                                              Color.fromARGB(255, 13, 13, 13),
-                                          width: 10.0,
-                                        ),
+                                    ),
+                                    child: const Text(
+                                      'Agregar Imagen',
+                                      style: TextStyle(
+                                        fontFamily: 'Inder',
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                   ),
@@ -197,21 +215,19 @@ class AgregarProducto extends StatelessWidget {
                             const SizedBox(height: 50),
                             Row(
                               children: [
-                                const SizedBox(width: 80),
+                                const SizedBox(width: 50),
                                 Expanded(
                                   child: ElevatedButton(
                                     onPressed: () {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) =>
-                                          mis_Productos()
-                                        ),
+                                            builder: (context) =>
+                                                mis_Productos()),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      primary: const Color(0xff3B6064),
-                                      onPrimary: const Color(0xffC9E4CA),
+                                      foregroundColor: const Color(0xffC9E4CA), backgroundColor: const Color(0xff3B6064),
                                       padding: const EdgeInsets.symmetric(
                                         horizontal: 10,
                                         vertical: 20,
@@ -226,9 +242,8 @@ class AgregarProducto extends StatelessWidget {
                                     ),
                                     child: const Text('CANCELAR'),
                                   ),
-                                  
                                 ),
-                               const SizedBox(width: 20),
+                                const SizedBox(width: 10),
                                 Expanded(
                                   child: ElevatedButton(
                                     onPressed: () {},
@@ -250,62 +265,21 @@ class AgregarProducto extends StatelessWidget {
                                     child: const Text('AÑADIR'),
                                   ),
                                 ),
-                                const SizedBox(width: 80),
+                                const SizedBox(width: 50),
                               ],
-
-                              
                             ),
                             const SizedBox(height: 20),
                           ],
-
                         ),
-                        
-                        
                       ),
                       const SizedBox(height: 20),
-                      Positioned(
-                      left: 0,
-                      right: 0,
-                      bottom: 20,
-                      
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                            const Color(0XFF364958)),
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                                    
-                          ),
-                          
-
-                        ),
-                        onPressed: (){
-                          //
-                        },
-                        
-                        child: const Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: Text("     AGREGAR PRODUCTO   ",
-                            style: TextStyle(
-                              fontFamily: 'Inder',
-                              fontSize: 20,
-                              color: Color(0xFFC9E4CA),
-                            ),
-                          ),
-                        )
-                      )
-                    )
-
                     ],
-                    
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
